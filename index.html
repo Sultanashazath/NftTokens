@@ -1,0 +1,184 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="./NftInteraction.js" ></script>
+
+
+<title>NFT ADMIN PANEL</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+
+<!-- Custom CSS -->
+<link href="css/style.css" rel='stylesheet' type='text/css' />
+
+<!-- font-awesome icons CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- //font-awesome icons CSS-->
+
+<!-- side nav css file -->
+<link href='css/SidebarNav.min.css' media='all' rel='stylesheet' type='text/css'/>
+<!-- //side nav css file -->
+ 
+ <!-- js-->
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/modernizr.custom.js"></script>
+
+<link href="//fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,latin-ext" rel="stylesheet">
+
+<script src="js/metisMenu.min.js"></script>
+<script src="js/custom.js"></script>
+<link href="css/custom.css" rel="stylesheet">
+
+
+</head> 
+<body class="cbp-spmenu-push">
+	<div class="main-content">
+	<div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+		<aside class="sidebar-left">
+      <nav class="navbar navbar-inverse">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".collapse" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            
+            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> NFT <span class="dashboard_text"> Tokens</span></a></h1>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul  class="sidebar-menu">
+              <li class="treeview">
+                <a href="index.html">
+                <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+              </li>
+              <li class="treeview">
+                <a href="tokenlist.html">
+                <i class="fa fa-dashboard"></i> <span>ListTokens</span>
+                </a>
+              </li>
+              <li id="mintid"  class="treeview">
+              </li>
+            </ul>
+          </div>
+      </nav>
+    </aside>
+  </div>
+  
+  <script>
+    $(window).on('load',function(){
+      web3.eth.getAccounts(function(err,res){
+
+    if(ownerAddress.toLowerCase()==res[0].toLowerCase()){
+      // alert("hlooo")
+    $('#mintid').append(' <a href="forms.html">  <i class="fa fa-dashboard"></i> <span>Mint Tokens</span> </a>');
+    }
+  })
+  })
+  </script>
+			<div class="sticky-header header-section ">
+			<div class="header-left">
+				<button id="showLeftPush"><i class="fa fa-bars"></i></button>
+				<div class="clearfix"> <br> &nbsp; <strong>Buy Each Colour Token at 0.1 Eth</strong> </center></div>
+			</div>
+			<div class="header-right"> <strong>
+      Balance: <div id="balance"></div>
+      </strong>
+				<div class="clearfix"> </div>				
+			</div>
+			<div class="clearfix"> </div>	
+		</div>
+		<br><br><br><br>
+		<div id="page-wrapper">
+			<div class="main-page">
+			<div id= "test" class="col_3">
+      
+        	<div class="clearfix"> </div>
+		</div>
+  </div>
+  
+  <!-- <button type="button" data-toggle="modal" data-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+         </div> 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+   
+        <div class="modal-body">
+        Token ID
+          <input  class="form-control" id="bidId" placeholder="1" size="25">
+        Bid Amount :
+          <input  class="form-control" id="bidAmount" placeholder="bidamount in ether(0.1)" size="25">
+         
+          <br>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary"  onclick="bid( bidId, bidAmount)">Bid</button>
+       
+        </div>
+      </div>
+        <!-- <div class="modal-footer"> -->
+      <!-- </div> -->
+        </div>
+      </div>
+    </div>
+  </div>
+   <script src="js/bootstrap.js"> </script>
+</body>
+    <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+// $(document).ready(function() {
+  $( window ).on( "load", function() {
+        // nft.totalSupply(function(err,res){
+        // alert(res.toString())
+        // for(i=0;i=5;i++){
+        console.log( "document loaded" );
+        t()
+        // }
+        })
+        var temps
+ async function t()
+{
+    var cid=1;
+    var ids=1
+    nft.totalSupply(async function(err,res){
+    let id=res.toString()
+   for(i=1;i<=id;i++){
+    nft.tokenDetais(cid,async function(e,r){
+     price=web3.fromWei(r[1].toString())
+      bidPrice=web3.fromWei(r[3].toString())
+    if(price=='0'){
+  $('#test').append('<div class="col-md-3 widget widget1"> <div class="r3_counter_box"><strong> NFT'+ ids +'</strong> <i class="pull-left   user2 " s   >  <img src="./images/'+ids+ '.png "  height="250" width="170"  alt="" /></i><div class="stats"><h5><strong></strong></h5> <br> </div><div>Price:' +price + ' </div>  <div>PrevBid:' +bidPrice+ ' </div><button  data-toggle="modal" data-target="#exampleModal" ">Bid</button></div></div> ');
+    }
+    else{
+  $('#test').append('<div class="col-md-3 widget widget1"> <div class="r3_counter_box"><strong> NFT'+ ids +'</strong> <i class="pull-left   user2 " s   >  <img src="./images/'+ids+ '.png "  height="250" width="170"  alt="" /></i><div class="stats"><h5><strong> </strong></h5> <br> </div><div>Price:' +price + ' </div><br><button onclick="buy('+ ids +','+ price +')">Buy</button></div></div> ');
+    }
+  ids++;
+})
+cid++;
+
+}
+})
+
+}  
+
+    </script>
+
+</html>
+
+
